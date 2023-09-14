@@ -1,3 +1,18 @@
+# todo_react_ts
+TodoアプリをTypeScriptで書き換えてみたリポジトリ。
+JavaScriptで記載したリポジトリは下記参照。
+
+https://github.com/railgun-0402/todo_react
+
+## function
+機能は以下の通り
+
+・テキストに記載されたタスクを追加できる
+・タスクを削除し、一覧から削除できる
+・タスクの数を表示することができる
+・チェック項目を活性にすると、残りのタスク数表示の数を減らすことができる
+・何も記載されてない場合は、ボタンを押下しても何も起こらない
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
