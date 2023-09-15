@@ -1,13 +1,12 @@
 import React from 'react'
 import Todo from './Todo'
 
-const TodoList = (props: {tasks: String[]}) => {
+const TodoList = (props: {tasks: string}) => {
+
   return (
     <>    
-    <Todo tasks={props.tasks}/>
-    <input type='text' />
-    <button>タスク追加</button>
-    <button>タスクを削除</button>
+    {/* <Todo /> */}
+    {props.tasks}    
     </>
     
   )

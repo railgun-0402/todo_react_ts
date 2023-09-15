@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Todo = (props: {tasks: String[]}) => {
+const Todo = () => {
   return (
     <>
-    {props.tasks}
+    
     </>    
   )
 }
