@@ -1,35 +1,59 @@
-import { useState, useRef } from "react";
+import { useState, useRef, MouseEvent } from "react";
+import "./App.css";
+import { v4 as uuidv4 } from 'uuid'
 import TodoList from "./TodoList";
 
 function App() {
-  const [tasks, setTasks] = useState<string>("");
-  const [todos, setTodos] = useState<string>("");
+  const [text, setText] = useState<string>("");
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const taskRef = useRef();
 
-  const inputText = useRef(null)
+  type Todo = {
+    task: string;
+    id: string;
+    completed: boolean;
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setTasks(e.target.value);
+    console.log(e.target.value);
 
   }
 
-  /*
-  * タスクを追加する
-  */
-    const handleAddTask = () => {
-      setTodos(tasks);
+    /*
+    * タスクを追加する
+    */
+    const handleAddTask = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {      
+      const newTodos: Todo = {
+        task: text,
+        id: uuidv4(),
+        completed: false,
+      }
+
+      setTodos((prevTask) => {
+        return [...prevTask, newTodos];
+      });
     }
 
   return (
-    <>
-      <TodoList tasks={todos} />
-      <input       
-      type='text'      
-      ref={inputText}
-      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
-      />
-      <button onClick={handleAddTask}>タスク追加</button>
-      <button>タスクを削除</button>
-    </>
+    <div className="App">
+      <div>
+        <h2>Todoリスト with Typescript</h2>        
+        <input
+        type='text'        
+        onChange={(event) => setText(event.target.value)}
+        value={text}
+        />
+        <button onClick={(e) => handleAddTask(e)}>タスク追加</button>
+        <button>タスクを削除</button>        
+        <div>
+        {todos.map(todo => (
+          <div key={todo.id}>
+            {todo.task}
+          </div>        
+        ))}
+        </div>        
+      </div>
+    </div>
   );
 }
 
