@@ -7,3 +7,7 @@
     height: 100vh;
     white-space: pre;
   }
+
+.todolist {
+    padding-top: 10px;
+}
