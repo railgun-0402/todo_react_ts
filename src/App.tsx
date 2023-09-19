@@ -1,7 +1,6 @@
 import { useState, } from "react";
 import "./App.css";
 import { v4 as uuidv4 } from 'uuid'
-import TodoList from "./TodoList";
 
 function App() {
   const [text, setText] = useState<string>("");
@@ -72,8 +71,7 @@ function App() {
         <button onClick={handleAddTask}>タスク追加</button>
         <button onClick={handleDeleteTask}>タスクを削除</button>
 
-        {/* Todoリスト */}
-        <TodoList todos={todos} toggleTodo={toggleTodo} />
+        {/* Todoリスト */}        
         <div className="todolist">
         {todos.map(todo => (
           <div key={todo.id}>
