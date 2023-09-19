@@ -1,6 +1,7 @@
 import { useState, } from "react";
 import "./App.css";
 import { v4 as uuidv4 } from 'uuid'
+import TodoList from "./TodoList";
 
 function App() {
   const [text, setText] = useState<string>("");
@@ -10,7 +11,7 @@ function App() {
     task: string;
     id: string;
     completed: boolean;
-  };
+  };    
 
     /*
     * タスクを追加する
@@ -59,16 +60,20 @@ function App() {
   return (
     <div className="App">
       <div>
-        <h2>Todoリスト with Typescript</h2>        
-        <input
+        <h2>Todoリスト with Typescript</h2>
+
+        {/* Todo入力テキスト */}
+        <input        
         type='text'        
         onChange={(event) => setText(event.target.value)}
         value={text}
+        
         />
         <button onClick={handleAddTask}>タスク追加</button>
         <button onClick={handleDeleteTask}>タスクを削除</button>
 
         {/* Todoリスト */}
+        <TodoList todos={todos} toggleTodo={toggleTodo} />
         <div className="todolist">
         {todos.map(todo => (
           <div key={todo.id}>
@@ -78,6 +83,7 @@ function App() {
         ))}
 
         {/* Todo残り数 */}
+        {/* filter関数で、falseであるものを取り出す(チェックされてない) */}
         <div>残りのタスク:{todos.filter((todo) => !todo.completed).length}</div>
         </div>        
       </div>
